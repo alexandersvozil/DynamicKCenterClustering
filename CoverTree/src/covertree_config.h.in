@@ -1,0 +1,3 @@
+// the configured options and settings for CoverTree
+#define CoverTree_VERSION_MAJOR @CoverTree_VERSION_MAJOR@
+#define CoverTree_VERSION_MINOR @CoverTree_VERSION_MINOR@
