@@ -32,7 +32,7 @@ data type.
 This file is part of the input. 
 #### Syntax:
 ```
-point-id x-coordinate y-coordinate
+point-id<tab>	x-coordinate y-coordinate
 ```
 
 #### Example for points file. (first parameter):
