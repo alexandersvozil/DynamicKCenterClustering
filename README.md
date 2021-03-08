@@ -44,7 +44,7 @@ data type.
 This file is part of the input. 
 #### Syntax:
 ```
-point-id<tab>	x-coordinate y-coordinate
+point-id <tab>	x-coordinate y-coordinate
 ```
 
 #### Example for points file. (first parameter):
@@ -63,9 +63,9 @@ point-id<tab>	x-coordinate y-coordinate
 
 ### Update File
 #### Syntax:
-1. `ix` insert point with id `x` (assumes that point x exists in the points file)
-2. `dx` insert point with id `x` (assumes that point x is already inserted)
-3. `q` query current k-center solution (assumes that at least one point is already inserted)
+- `ix` insert point with id `x` (assumes that point x exists in the points file)
+- `dx` insert point with id `x` (assumes that point x is already inserted)
+- `q` query current k-center solution (assumes that at least one point is already inserted)
 
 #### Example for updates file (second parameter):
 ```
