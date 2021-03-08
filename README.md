@@ -25,14 +25,17 @@ To run the k-center algorithm on a given instance use the following command.
 Example: `./kcenter "../../../experiments/datasets/random/random_2M" "../../../experiments/queries/200000_sliding" 20 4 200000`
 
 
-The algorithm supports only 2 dimensional euclidean metrics right now.
+The algorithm supports only 2 dimensional euclidean metrics right now and works with the `double`
+data type.
 
-###Points File
+### Points File
 This file is part of the input. 
-Syntax:
-`point id` `x-coordinate` `y-coordinate`
+#### Syntax:
+```
+point-id x-coordinate y-coordinate
+```
 
-Example for points file. (first parameter)
+#### Example for points file. (first parameter):
 
 ```
 0	0.2051748826 -0.03279284533
@@ -48,12 +51,12 @@ Example for points file. (first parameter)
 ```
 
 ### Update File
-Syntax:
-`ix` insert point with id `x` (assumes that point x exists in the points file)
-`dx` insert point with id `x` (assumes that point x is already inserted)
-`q` query current k-center solution (assumes that at least one point is already inserted)
+#### Syntax:
+1. `ix` insert point with id `x` (assumes that point x exists in the points file)
+2. `dx` insert point with id `x` (assumes that point x is already inserted)
+3. `q` query current k-center solution (assumes that at least one point is already inserted)
 
-Example for updates file (second parameter):
+#### Example for updates file (second parameter):
 ```
 i152904
 i199689
