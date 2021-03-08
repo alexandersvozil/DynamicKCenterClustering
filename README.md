@@ -11,6 +11,13 @@ git clone https://github.com/alexandersvozil/DynamicKCenterClustering/
 ```
 
 ### Compiling:
+```
+cd CoverTree/src
+mkdir build
+cd build
+cmake ..
+make
+```
 
 ## Running Instructions.
 To run the k-center algorithm on a given instance use the following command.
@@ -36,7 +43,6 @@ point-id<tab>	x-coordinate y-coordinate
 ```
 
 #### Example for points file. (first parameter):
-
 ```
 0	0.2051748826 -0.03279284533
 1	0.2042274195 -0.03338254464
