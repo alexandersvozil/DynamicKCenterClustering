@@ -2,8 +2,13 @@
 
 The dynamic k-center problem asks for k center points which minimize the maximum distance 
 to the current set of points in a given metric space under the insertion and deletion of points.
+The code presented in this GitHub repository is based on the paper: 
+#### Fully Dynamic k-Center Clustering in Low Dimensional Metrics
+Link: `https://epubs.siam.org/doi/abs/10.1137/1.9781611976472.11`
 
 ## Installation Notes.
+The algorithm uses the Eigen3 3.3 library : `https://eigen.tuxfamily.org/index.php?title=Main_Page`
+
 
 ### Downloading:
 ```
