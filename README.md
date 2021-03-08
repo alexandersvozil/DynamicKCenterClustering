@@ -1,17 +1,17 @@
-#Solving the dynamic k-center problem.
+# Solving the dynamic k-center problem.
 
 The dynamic k-center problem asks for k center points which minimize the maximum distance 
 to the current set of points in a given metric space under the insertion and deletion of points.
 
-##Installation Notes.
+## Installation Notes.
 
-###Downloading:
+### Downloading:
 ```
 git clone 
 ```
 
-###Compiling:
+### Compiling:
 
-##Running Programs.
+## Running Programs.
 
 
