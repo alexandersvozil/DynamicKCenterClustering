@@ -2,7 +2,7 @@
 
 The dynamic k-center problem asks for k center points which minimize the maximum distance 
 to the current set of points in a given metric space under the insertion and deletion of points.
-The code presented in this GitHub repository is based on the paper: 
+The following paper is the basis for the code:
 #### Fully Dynamic k-Center Clustering in Low Dimensional Metrics - Gramoz Goranci, Monika Henzinger, Dariusz Leniowski, Christian Schulz and Alexander Svozil
 Link: `https://epubs.siam.org/doi/abs/10.1137/1.9781611976472.11`
 
@@ -81,4 +81,26 @@ i138189
 i92976
 i16895
 q
+```
+
+# Licence
+The program is licenced under MIT licence. If you publish results using our algorithms, please acknowledge our work by quoting the following paper:
+
+```
+@inproceedings{DBLP:conf/alenex/GoranciHLSS21,
+  author    = {Gramoz Goranci and
+               Monika Henzinger and
+               Dariusz Leniowski and
+               Christian Schulz and
+               Alexander Svozil},
+  title     = {Fully Dynamic \emph{k}-Center Clustering in Low Dimensional Metrics},
+  booktitle = {Proceedings of the Symposium on Algorithm Engineering and Experiments,
+               {ALENEX} 2021, Virtual Conference, January 10-11, 2021},
+  pages     = {143--153},
+  publisher = {{SIAM}},
+  year      = {2021},
+  url       = {https://doi.org/10.1137/1.9781611976472.11},
+  doi       = {10.1137/1.9781611976472.11},
+}
+
 ```
