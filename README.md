@@ -64,7 +64,7 @@ point-id <tab>	x-coordinate y-coordinate
 ### Update File
 #### Syntax:
 - `ix` insert point with id `x` (assumes that point x exists in the points file)
-- `dx` insert point with id `x` (assumes that point x is already inserted)
+- `dx` delete point with id `x` (assumes that point x is already inserted)
 - `q` query current k-center solution (assumes that at least one point is already inserted)
 
 #### Example for updates file (second parameter):
