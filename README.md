@@ -85,6 +85,14 @@ i16895
 q
 ```
 
+### Full Example
+The Makefile compiles a full example of the program called 'test_cover' using subsets of the
+original datasets used in the paper.
+
+Here is a link to the full datasets (and also reduced datasets) as used in the paper:
+https://mega.nz/folder/IYRi0b5B#fd1-6dsrwAYNtchSysgD9w
+
+
 # Licence
 The program is licenced under MIT licence. If you publish results using our algorithms, please acknowledge our work by quoting the following paper:
 
