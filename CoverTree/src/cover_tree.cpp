@@ -73,138 +73,11 @@ bool CoverTree::insert_simplified(const pointType& p,uint id)
 	//assert that the inserted node can be a successor of the root
 	//assert(root->dist(p) <= (base/(base-1.0))*covdist(root->level));
 	std::vector<Node*> Q = {root};
-	//uint random_number_k =  k/2 + (unsigned int) std::rand()%(k/2);
-	//std::cout << 	random_number_k << std::endl;	
-	//lower_bound = 0;
-	//return insert_lazy(Q,p,id, random_number_k);
-	//return insert_fast(root,p,id, root);
-	//return insert_simplified(Q,p,id);
 	return insert_iter(Q,p,id);
 }
 
-bool CoverTree::insert_lazy(std::vector<Node*>& curQ, const pointType &p, uint id, uint comparison_bound){
-	Node* n_parent = NULL;
-	std::vector<Node*> nextQ;
-	while(true)
-	{
-		//std::cout << "print comparison_bound: " << comparison_bound << std::endl;
-		coordType d_p_Q = std::numeric_limits<coordType>::max();
-		int current_level = 0;
-
-		for (Node* current: curQ){
-			current_level = current->level;
-			coordType explore_dist = covdist(current->level)/(base-1.0);
-			//check if child has itself as child
-			if(current->children.empty()){
-				current->children.push_back(new Node(current->_p,current->ID,current->level-1,current));
-			}
-			//check distance from @p to all children of @current, i.e., child_dist. 
-			//if child_dist is low enough => put child into nextQ 
-			for (size_t i = 0; i < current->children.size(); ++i)
-			{
-				Node* child = current->children[i];
-				coordType child_dist = 0;
-				child_dist = child->dist(p);
-				d_p_Q = std::min(d_p_Q,child_dist);
-
-				//node never seens before
-				if(comparison_bound > 0 ) {
-					comparison_bound--;
-				}
-				if(comparison_bound == 0 && child_dist <= covdist(child->level)){
-					N++;
-					child->setChild(p,id);
-					return true;
-				}
-
-				if(child_dist <= explore_dist) {
-					//if(comparison_bound == 0 && child_dist < covdist(child->level)){
-					//	return insert_fast(child, p,id,child);
-				//	}
-					nextQ.push_back(child);
-				}
-
-			}
-		}
-		//if no child is close enough to p and the distance to all children of all nodes in the
-		//original curQ is greater than the current_level we break, because we need to put p in some
-		//level above where we already set a parent
-		if(nextQ.empty() && d_p_Q > covdist(current_level))
-		{
-			break;
-		} else {
-			for(Node* cur : curQ) {
-				coordType parent_dist = cur->dist(p);
-				if(parent_dist <= covdist(current_level))	{
-					n_parent = cur;
-					break;
-				}
-			}
-			curQ.swap(nextQ);
-			nextQ.clear();
-		}
-	}
-	assert(n_parent != NULL);
-	N++;
-	n_parent->setChild(p,id);
-	return true;
-}
 
 
-
-bool CoverTree::insert_fast(Node* current, const pointType &p, uint id, Node* n_parent){
-
-	while(true)
-	{
-		//coordType parent_dist = current->dist(p);
-		coordType explore_dist = covdist(current->level)/(base-1.0);
-
-		//add current as a child
-		//if(current->children.empty()){
-		//	current->children.push_back(new Node(current->_p,current->ID,current->level-1,current));
-		//	assert(!current->children.empty());
-		//}
-
-		//check distance from @p to all children of @current, i.e., child_dist. 
-		//if child_dist is smaller than explore_dist => we descend at this child greedily (relaxing separation
-		//condition)
-		//
-		Node* newCurrent = NULL;
-		if(current->children.empty()){
-			current->children.push_back(new Node(current->_p,current->ID,current->level-1,current));
-		}
-		for (size_t i = 0; i < current->children.size(); ++i)
-		{
-			Node* child = current->children[i];
-			coordType child_dist = child->dist(p);
-			//lower_bound = std::min(child_dist,lower_bound);
-			if(child_dist <= covdist(child->level) ){ 
-				N++;
-				child->setChild(p,id);
-				return true;
-				//std::cout << covdist(child->level) << std::endl;
-			}
-
-			if(child_dist <= explore_dist) {
-				n_parent = child;
-				newCurrent = child;
-				break;
-			}
-		}
-
-		if(newCurrent == NULL) 
-		{
-			break;
-		}
-		current = newCurrent;
-	}
-	assert(n_parent != NULL);
-	N++;
-	n_parent->setChild(p,id);
-	return true;
-}
-
-//because we take the first fearsible parent
 bool CoverTree::insert_iter(std::vector<Node*>& curQ, const pointType& p, uint id)
 {
 	Node* n_parent = NULL;
@@ -252,53 +125,6 @@ bool CoverTree::insert_iter(std::vector<Node*>& curQ, const pointType& p, uint i
 	n_parent->setChild(p,id);
 	//std::cout << "inserted " << id << std::endl;
 	return true;
-}
-
-//recursive version of insert
-bool CoverTree::insert_simplified(std::vector<Node*>& curQ, const pointType& p, uint id)
-{
-	std::vector<Node*> nextQ;
-	for (Node* current: curQ){
-		if(current->children.empty()){
-			current->children.push_back(new Node(current->_p,current->ID,current->level-1,current));
-		}
-		for (size_t i = 0; i < current->children.size(); ++i)
-		{
-			Node* child = current->children[i];
-			coordType dist_child = child->dist(p);
-			coordType explore_upper = covdist(current->level)/(base-1);
-			if (dist_child <=  explore_upper)
-			{
-				nextQ.push_back(child);
-			}
-		}
-	}
-	bool result = false;
-	if(!nextQ.empty() ){
-		result = insert_simplified(nextQ, p, id);
-	}
-	if (result || nextQ.empty())
-	{
-		Node *parent = NULL;	
-		coordType parentDist;
-		for(Node* current : curQ){
-			parentDist = current->dist(p);
-			if( parentDist <=  covdist(current->level)){
-				parent = current;
-				break;
-			}
-		}
-		if(parent != NULL){
-			N++;
-			parent->setChild(p, id);
-			return false;
-		}
-		if(parent == NULL) {
-			return true;
-		}
-	}
-	return result;
-
 }
 
 bool CoverTree::delete_node(uint id, const pointType& p ){
@@ -524,6 +350,7 @@ update_response CoverTree::update(Update &u){
 	}
 	return 0;
 }
+
 void CoverTree::check_deleted(uint index)
 {
 
@@ -573,11 +400,3 @@ CoverTree::~CoverTree()
 		delete current;
 	}
 }
-
-
-
-/******************************************* Auxiliary Functions ***************************************************/
-//int CoverTree::get_level()
-//{
-//	return root->level;
-//}
