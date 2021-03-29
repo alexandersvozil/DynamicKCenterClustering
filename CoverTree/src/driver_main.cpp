@@ -9,8 +9,6 @@
 #include <future>
 #include <thread>
 #include <string>
-//#include "Eigen/Core"
-//#define EIGEN_DONT_PARALLELIZE
 
 #include "math.h"
 #include "cover_tree.h"
@@ -71,11 +69,3 @@ int main(int argc, char** argv){
 //std::cout << "debugging done" << std::endl;
 
 
-//double dist(const pointType& _p, const pointType& pp) // L2 distance between current node and point pp
-//{
-//	coordType x1 = fabs(_p[1] - pp[1]);
-//	coordType x2 = std::min(fabs(_p[0]-pp[0]), 360-fabs(_p[0]-pp[0]));
-//	coordType dist =  x1*x1 + x2*x2;
-//	assert(dist > 0 && "Distance is not greater zero");
-//	return std::sqrt(dist);
-//}

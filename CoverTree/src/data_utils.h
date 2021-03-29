@@ -7,6 +7,7 @@
 #include <boost/algorithm/string.hpp>
 #include <vector>
 #include <iostream>
+
 std::vector<pointType> read_points(const std::string& instance_path, int nr_of_points)
 {
 	std::ifstream fin(instance_path);
@@ -14,21 +15,12 @@ std::vector<pointType> read_points(const std::string& instance_path, int nr_of_p
 	std::vector<pointType> pointList;
 	std::string linebuffer;
 
-	//std::default_random_engine generator;
-	//std::uniform_real_distribution<float> distribution(-0.1f,0.1f);
 	int line_nr = 0;
 	while(fin && getline(fin,linebuffer)){
 		if(nr_of_points == line_nr) break;
 		std::vector<std::string> tokens;
 		boost::split(tokens, linebuffer, boost::is_any_of("\t "));
 		pointType newPt{2};
-
-		/* floats */
-	//	float random_eps = distribution(generator);
-	//	newPt[0]= stof(tokens[1])+random_eps;
-	//	float random_eps2 = distribution(generator);
-	//	newPt[1]= stof(tokens[2])+random_eps2;
-		   
 
 		/* doubles  */
 		newPt[0]= stod(tokens[1]);

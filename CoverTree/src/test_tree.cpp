@@ -32,13 +32,13 @@ void execute_alg(std::string point_path,int nr_points,std::string update_path, u
 int main(){
 
 	std::cout << "Random"  << std::endl;
-	execute_alg("../../../experiments/datasets/random/random_2M", 200000, "../../../experiments/queries/200000_sliding", 20, 4);//0.00001,2.7 );
+	execute_alg("../../example_data/datasets/random_200k", 200000, "../../example_data/experiments/200000_sliding", 20, 4);//0.00001,2.7 );
 	std::cout << "Twitter - 100000 " << std::endl;
 	//execute_alg("../../../experiments/datasets/twitter/twitter_nodups.txt", 100000, "../../../queries/100000_insertAll", 20, 0.1);
-	execute_alg("../../../experiments/datasets/twitter/twitter_nodups.txt", 200000, "../../../experiments/queries/200000_with_del_0.1", 100, 4);
-	execute_alg("../../../experiments/datasets/twitter/twitter_nodups.txt", 200000, "../../../experiments/queries/200000_with_del_0.3", 100, 4);
-	execute_alg("../../../experiments/datasets/twitter/twitter_nodups.txt", 200000, "../../../experiments/queries/200000_with_del_0.05", 100, 4);
+	execute_alg("../../example_data/datasets/twitter_200k", 200000, "../../example_data/experiments/200000_with_del_0.1", 100, 4);
+	execute_alg("../../example_data/datasets/twitter_200k", 200000, "../../example_data/experiments/200000_with_del_0.3", 100, 4);
+	execute_alg("../../example_data/datasets/twitter_200k", 200000, "../../example_data/experiments/200000_with_del_0.05", 100, 4);
 	////INSERTION ONLY with queries 
 	std::cout << "Yfcc - 100000 " << std::endl;
-	execute_alg("../../../experiments/datasets/yfcc100/yfcc.csv", 200100, "../../../experiments/queries/200000_with_del_0.1", 100, 4);
+	execute_alg("../../example_data/datasets/yfcc_200100", 200100, "../../example_data/experiments/200000_with_del_0.1", 100, 4);
 }
