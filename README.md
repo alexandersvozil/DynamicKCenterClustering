@@ -26,11 +26,11 @@ make
 
 ## Running Instructions.
 To run the k-center algorithm on a given instance use the following command.
-`<path_to_points>` - path to the file which contains all points of the metric space.
-`<path_to_updates>` - path to the file which contains the updates 
-`k` - number of centers we want to maintain
-`epsilon` - the algorithm guarantees a (2+epsilon) solution.
-`nr_of_points` - The algorithm considers the first `nr_of_points` lines of `<path_to_points>` file.
+- `<path_to_points>` - path to the file which contains all points of the metric space.
+- `<path_to_updates>` - path to the file which contains the updates 
+- `k` - number of centers we want to maintain
+- `epsilon` - the algorithm guarantees a (2+epsilon) solution.
+- `nr_of_points` - The algorithm considers the first `nr_of_points` lines of `<path_to_points>` file.
 ```
 ./kcenter <path_to_points> <path_to_updates> k epsilon nr_of_points 
 ```
